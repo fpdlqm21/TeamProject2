@@ -21,7 +21,6 @@ public class MonthViewActivity extends AppCompatActivity {
     Adapter adapter;
     ArrayList daylist;
     Calendar mCal;
-    Calendar mDay;
     int year, month, date = 1;
 
     @Override
