@@ -108,6 +108,7 @@ public class MonthViewActivity extends AppCompatActivity {
                         Toast.LENGTH_SHORT).show();
             }
         });
+        getSupportActionBar().setTitle(year+"년"+(month+1)+"월");
 
     }
 
