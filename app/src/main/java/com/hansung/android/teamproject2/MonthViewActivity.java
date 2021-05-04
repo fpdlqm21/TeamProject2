@@ -1,6 +1,8 @@
 package com.hansung.android.teamproject2;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -31,6 +33,11 @@ public class MonthViewActivity extends AppCompatActivity {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+        fragmentTransaction.add(R.id.fragment_container, new MonthViewFragment());
+        fragmentTransaction.commit();
 
         mCal = Calendar.getInstance(); //Calendar 객체 생성
         Intent intent = getIntent(); //다른 액티비티에서 전달받을 인텐트 객체생성
@@ -135,9 +142,19 @@ public class MonthViewActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.month_view:
+                FragmentManager fragmentManager = getSupportFragmentManager();
+                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+                fragmentTransaction.replace(R.id.fragment_container, new MonthViewFragment());
+                fragmentTransaction.commit();
+
                 Toast.makeText(getApplicationContext(), "month_view", Toast.LENGTH_SHORT).show();
                 return true;
             case R.id.week_view:
+                fragmentManager = getSupportFragmentManager();
+                fragmentTransaction = fragmentManager.beginTransaction();
+                fragmentTransaction.replace(R.id.fragment_container, new WeekViewFragment());
+                fragmentTransaction.commit();
+
                 Toast.makeText(getApplicationContext(), "week_view", Toast.LENGTH_SHORT).show();
                 return true;
 
