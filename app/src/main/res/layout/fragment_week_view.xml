@@ -68,13 +68,6 @@
 
     </TableRow>
 
-    <GridView
-        android:id="@+id/gridview"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:numColumns="7">
-
-    </GridView>
     <androidx.viewpager2.widget.ViewPager2
         android:id="@+id/vpPager"
         android:layout_width="match_parent"

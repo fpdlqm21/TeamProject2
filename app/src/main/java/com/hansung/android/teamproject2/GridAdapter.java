@@ -7,39 +7,42 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
 
+import androidx.fragment.app.FragmentActivity;
+
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Calendar;
 
-public class Adapter extends BaseAdapter {
-
+public class GridAdapter extends BaseAdapter {
+    private Context mContext;
     private ArrayList daylist;
-    private Context mcontext;
     private Calendar mCal;
     private LayoutInflater minflater;
 
-    public Adapter(Context context, ArrayList<String> daylist){
+    public GridAdapter(Context context, int activity_list_item, ArrayList<Integer> daylist)
+    {
         this.daylist = daylist;
-        mcontext = context;
-        minflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE); //레이아웃파일의 Resource를 View 객체로 반환
+        mContext = context;
+        minflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
     }
+
     @Override
-    public int getCount() { //데이터 항목의 총 개수 반환
+    public int getCount() {
         return daylist.size();
     }
 
     @Override
-    public Object getItem(int position) { //몇번째 항목을 선택?
+    public Object getItem(int position) {
         return daylist.get(position);
     }
 
     @Override
-    public long getItemId(int position) { //선택된 항목의 ID?
+    public long getItemId(int position) {
         return position;
     }
 
     @Override
-    public View getView(int position, View convertView, ViewGroup parent) { //선택된 항목을 얻어 화면에 표시
-
+    public View getView(int position, View convertView, ViewGroup parent) {
         if(convertView == null)
         {
             convertView = minflater.inflate(R.layout.date, parent, false);

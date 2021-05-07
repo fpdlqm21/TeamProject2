@@ -1,123 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/fragment_container"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:id="@+id/fragment_container"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     tools:context=".MonthViewActivity">
 
-    <RelativeLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
 
-        <Button
-            android:id="@+id/button1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentTop="true"
-            android:text="이전" />
-
-        <TextView
-            android:id="@+id/yearmonth"
-            android:layout_width="107dp"
-            android:layout_height="40dp"
-            android:layout_marginStart="62dp"
-            android:layout_marginLeft="62dp"
-            android:layout_marginEnd="66dp"
-            android:layout_marginRight="66dp"
-            android:layout_toStartOf="@+id/button2"
-            android:layout_toLeftOf="@+id/button2"
-            android:layout_toEndOf="@+id/button1"
-            android:layout_toRightOf="@+id/button1"
-            android:paddingTop="10dp"
-            android:textSize="15dp"
-            android:text=" 년 월" />
-
-        <Button
-            android:id="@+id/button2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentTop="true"
-            android:layout_alignParentRight="true"
-            android:text="다음" />
-    </RelativeLayout>
-
-    <fragment
-        android:name="com.hansung.android.teamproject2.MonthViewFragment"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:id="@+id/monthviewfragment"/>
-<!--    <TableRow-->
-<!--        android:layout_width="wrap_content"-->
-<!--        android:layout_height="wrap_content">-->
-<!--        <TextView-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:textSize="18sp"-->
-<!--            android:paddingLeft="18dp"-->
-<!--            android:paddingRight="18dp"-->
-<!--            android:background="@color/green"-->
-<!--            android:text="일"/>-->
-<!--        <TextView-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:textSize="18sp"-->
-<!--            android:paddingLeft="18dp"-->
-<!--            android:paddingRight="18dp"-->
-<!--            android:background="@color/green"-->
-<!--            android:text="월"/>-->
-<!--        <TextView-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:textSize="18sp"-->
-<!--            android:paddingLeft="18dp"-->
-<!--            android:paddingRight="18dp"-->
-<!--            android:background="@color/green"-->
-<!--            android:text="화"/>-->
-<!--        <TextView-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:textSize="18sp"-->
-<!--            android:paddingLeft="18dp"-->
-<!--            android:paddingRight="18dp"-->
-<!--            android:background="@color/green"-->
-<!--            android:text="수"/>-->
-<!--        <TextView-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:textSize="18sp"-->
-<!--            android:paddingLeft="18dp"-->
-<!--            android:paddingRight="18dp"-->
-<!--            android:background="@color/green"-->
-<!--            android:text="목"/>-->
-<!--        <TextView-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:textSize="18sp"-->
-<!--            android:paddingLeft="18dp"-->
-<!--            android:paddingRight="18dp"-->
-<!--            android:background="@color/green"-->
-<!--            android:text="금"/>-->
-
-<!--        <TextView-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:background="@color/green"-->
-<!--            android:paddingLeft="18dp"-->
-<!--            android:paddingRight="18dp"-->
-<!--            android:text="토"-->
-<!--            android:textSize="18sp" />-->
-
-<!--    </TableRow>-->
-
-<!--    <GridView-->
-<!--        android:id="@+id/gridview"-->
-<!--        android:layout_width="wrap_content"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:numColumns="7">-->
-
-<!--    </GridView>-->
 </LinearLayout>
