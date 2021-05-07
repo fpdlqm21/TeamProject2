@@ -8,6 +8,7 @@ import androidx.viewpager2.adapter.FragmentStateAdapter;
 import androidx.viewpager2.widget.ViewPager2;
 
 import android.content.Intent;
+import android.content.res.Configuration;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
@@ -37,7 +38,7 @@ public class MonthViewActivity extends AppCompatActivity
         fragmentTransaction.add(R.id.fragment_container, new MonthViewFragment());
         fragmentTransaction.commit();
 
-        getSupportActionBar().setTitle("액션바 지금 안돼요ㅠㅠ");
+        //getSupportActionBar().setTitle("현재 년 월");
 
     }
 

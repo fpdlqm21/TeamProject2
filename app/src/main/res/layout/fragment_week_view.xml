@@ -69,7 +69,7 @@
     </TableRow>
 
     <androidx.viewpager2.widget.ViewPager2
-        android:id="@+id/vpPager"
+        android:id="@+id/WvpPager"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
 
