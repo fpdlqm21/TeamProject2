@@ -14,15 +14,18 @@
         android:text=" "
         />
 
+
     <GridView
         android:id="@+id/gridview"
         android:layout_width="match_parent"
         android:layout_height="700dp"
         android:gravity="center"
         android:horizontalSpacing="1dp"
+        android:verticalSpacing="1dp"
         android:numColumns="7"
         android:listSelector="#FF03DAC5"
-        android:drawSelectorOnTop="false"
-        android:verticalSpacing="1dp" />
+        android:drawSelectorOnTop="false">
+    </GridView>
+
 
 </LinearLayout>
