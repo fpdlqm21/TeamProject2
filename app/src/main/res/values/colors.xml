@@ -8,6 +8,6 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="green">#AAD34A</color>
-    <drawable name="focused">#88ff5500</drawable>
-    <drawable name="selected">#88ff00ff</drawable>
+    <drawable name="focused">#FF000000</drawable>
+    <drawable name="selected">#FF03DAC5</drawable>
 </resources>

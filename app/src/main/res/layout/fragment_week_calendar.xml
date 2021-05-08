@@ -16,13 +16,18 @@
         android:layout_height="wrap_content"
         android:numColumns="7"
         android:id="@+id/week_grid"
-        android:gravity="center"/>
+        android:gravity="center"
+        android:listSelector="#FF03DAC5"
+        android:drawSelectorOnTop="false"/>
 
-    <GridLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:columnCount="7"
-        android:rowCount="24"
-        />
+    <ScrollView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+        <GridLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:columnCount="7"
+            android:rowCount="24" />
+    </ScrollView>
 
 </FrameLayout>

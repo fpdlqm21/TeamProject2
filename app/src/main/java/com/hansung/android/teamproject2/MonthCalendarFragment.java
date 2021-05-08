@@ -25,7 +25,7 @@ import java.util.Calendar;
  * create an intace of this fragment.
  */
 
-public class MonthCalendarFragment extends Fragment {
+public class MonthCalendarFragment extends Fragment { //MonthCalendarAdapter와 연결되어 MonthViewfragment에서 동작
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -35,8 +35,8 @@ public class MonthCalendarFragment extends Fragment {
     // TODO: Rename and change types of parameters
     private int mParam1;
     private int mParam2;
-    static ArrayList daylist;
-    static Calendar mCal;
+    static ArrayList daylist; //날짜를 담을 리스트
+    static Calendar mCal; //캘린더 객체
     static int date = 1;
     static GridView gridView;
     static int y, m;
@@ -53,7 +53,7 @@ public class MonthCalendarFragment extends Fragment {
      */
 
     // TODO: Rename and change types and number of parameters
-    public static MonthCalendarFragment newInstance(int year, int month) {
+    public static MonthCalendarFragment newInstance(int year, int month) { //팩토리 메소드
         MonthCalendarFragment fragment = new MonthCalendarFragment();
 
         mCal = Calendar.getInstance();
@@ -72,10 +72,9 @@ public class MonthCalendarFragment extends Fragment {
     public static void setDate(int year, int month, int date) {
 
         daylist = new ArrayList();
-        mCal.set(year, month, date); //calendar 객체의 날짜 설정
-
         y=year;
-        m=month;
+        m=month+4;
+        mCal.set(year, m, date); //calendar 객체의 날짜 설정
 
         for(int i=1; i<mCal.get(Calendar.DAY_OF_WEEK); i++)
         {
@@ -99,7 +98,7 @@ public class MonthCalendarFragment extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
+                             Bundle savedInstanceState) { //레이아웃 생성
         View rootView = inflater.inflate(R.layout.fragment_month_calendar,
                 container, false);
         gridView = rootView.findViewById(R.id.gridview);
@@ -109,10 +108,9 @@ public class MonthCalendarFragment extends Fragment {
 
         gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Toast.makeText(getActivity(), "position= "+position,
-                        Toast.LENGTH_SHORT).show();
-                System.out.println("position= "+position);
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) { //날짜가 눌릴경우
+                Toast.makeText(getActivity(), (m+1)+"."+(position-mCal.get(Calendar.DAY_OF_WEEK)+2),
+                        Toast.LENGTH_SHORT).show(); //클릭된 날짜 출력(제대로된 날짜가 출력 안됨 수정해야함)
             }
         });
         ((MonthViewActivity) getActivity()).getSupportActionBar().setTitle(y+"년 "+(m+1)+"월");

@@ -19,7 +19,7 @@ import java.util.Calendar;
  * Use the {@link WeekCalendarFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class WeekCalendarFragment extends Fragment {
+public class WeekCalendarFragment extends Fragment { //WeekCalendarAdapter와 연결되어 WeekViewfragment에서 실행
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -72,7 +72,7 @@ public class WeekCalendarFragment extends Fragment {
         int date=1;
         last=0;
         num=0;
-        int lastN = mCal.getActualMaximum(Calendar.DAY_OF_MONTH);
+        int lastN = mCal.getActualMaximum(Calendar.DAY_OF_MONTH); //이달의 마지막날
         mCal.set(year, month, date); //calendar 객체의 날짜 설정
 
         y=year;
@@ -116,9 +116,9 @@ public class WeekCalendarFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View rootView = inflater.inflate(R.layout.fragment_month_calendar,
+        View rootView = inflater.inflate(R.layout.fragment_week_calendar,
                 container, false);
-        gridView = rootView.findViewById(R.id.gridview);
+        gridView = rootView.findViewById(R.id.week_grid);
         GridAdapter adapter = new GridAdapter(getActivity(),android.R.layout.simple_list_item_1,
                 daylist);
         gridView.setAdapter((GridAdapter) adapter);

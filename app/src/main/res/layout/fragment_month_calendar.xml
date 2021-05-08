@@ -21,8 +21,8 @@
         android:gravity="center"
         android:horizontalSpacing="1dp"
         android:numColumns="7"
-        android:listSelector="@drawable/listselcalendar"
-        android:drawSelectorOnTop="true"
+        android:listSelector="#FF03DAC5"
+        android:drawSelectorOnTop="false"
         android:verticalSpacing="1dp" />
 
 </LinearLayout>

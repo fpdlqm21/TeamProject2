@@ -26,13 +26,13 @@ public class WeekViewFragment extends Fragment {
     }
 
     // TODO: Rename and change types and number of parameters
-    public static WeekViewFragment newInstance(String param1, String param2) {
-        WeekViewFragment fragment = new WeekViewFragment();
-        Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
+    public static WeekViewFragment newInstance(String param1, String param2) { //팩토리 메소드, 객체 인스턴스를 만들어 넘겨줌
+        WeekViewFragment fragment = new WeekViewFragment(); //객체 생성
+        Bundle args = new Bundle(); //인자 값을 저장할 번들 객체
+        args.putString(ARG_PARAM1, param1); //번들에 키, 값 설정
         args.putString(ARG_PARAM2, param2);
-        fragment.setArguments(args);
-        return fragment;
+        fragment.setArguments(args); //인자값을 저장한 번들 객체를 프래그먼트로 전달
+        return fragment; //프래그먼트 반환
     }
 
     @Override
@@ -46,7 +46,7 @@ public class WeekViewFragment extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
+                             Bundle savedInstanceState) { //프래그먼트의 레이아웃 생성
         View rootView = inflater.inflate(R.layout.fragment_week_view, container,false);
         ViewPager2 vpPager = rootView.findViewById(R.id.WvpPager);
         FragmentStateAdapter adapter = new WeekCalendarAdapter(this);

@@ -40,13 +40,13 @@ public class MonthViewFragment extends Fragment {
      * @return A new instance of fragment MonthViewFragment.
      */
     // TODO: Rename and change types and number of parameters
-    public static MonthViewFragment newInstance(int index) {
-        MonthViewFragment fragment = new MonthViewFragment();
+    public static MonthViewFragment newInstance(int index) { //팩토리 메소드
+        MonthViewFragment fragment = new MonthViewFragment(); //프래그먼트 객체 생성
 
-        Bundle args = new Bundle();
-        args.putInt(ARG_PARAM1, index);
-        fragment.setArguments(args);
-        return fragment;
+        Bundle args = new Bundle(); //인자를 위한 번들객체
+        args.putInt(ARG_PARAM1, index); //index를 담음
+        fragment.setArguments(args); //프래그먼트에 번들객체 담음
+        return fragment; //프래그먼트 반환
     }
 
     @Override
@@ -59,10 +59,10 @@ public class MonthViewFragment extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
+                             Bundle savedInstanceState) { //레이아웃 생성
         View rootView = inflater.inflate(R.layout.fragment_month_view, container,false);
-        ViewPager2 vpPager = rootView.findViewById(R.id.MvpPager);
-        FragmentStateAdapter adapter = new MonthCalendarAdapter(this);
+        ViewPager2 vpPager = rootView.findViewById(R.id.MvpPager); //vpager2 객체 연결
+        FragmentStateAdapter adapter = new MonthCalendarAdapter(this); //apdater연결
         vpPager.setAdapter(adapter);
         // Inflate the layout for this fragment
         return rootView;
