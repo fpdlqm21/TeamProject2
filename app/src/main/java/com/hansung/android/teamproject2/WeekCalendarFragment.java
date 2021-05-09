@@ -11,6 +11,7 @@ import android.widget.AdapterView;
 import android.widget.GridView;
 import android.widget.Toast;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 
@@ -73,33 +74,44 @@ public class WeekCalendarFragment extends Fragment { //WeekCalendarAdapter와 �
         last=0;
         num=0;
         int lastN = mCal.getActualMaximum(Calendar.DAY_OF_MONTH); //이달의 마지막날
-        mCal.set(year, month, date); //calendar 객체의 날짜 설정
+        SimpleDateFormat sdf = new SimpleDateFormat("dd");
+        //mCal.set(year, month, date); //calendar 객체의 날짜 설정
 
         y=year;
         m=month;
+        mCal.setFirstDayOfWeek(Calendar.SUNDAY);
 
-        while(num<7)
+        int dayOfWeek = mCal.get(Calendar.DAY_OF_WEEK);
+        mCal.add(Calendar.DAY_OF_WEEK, (-(dayOfWeek -1)));
+
+        for(int i=0; i<7; i++)
         {
-            for(int i=1; i<mCal.get(Calendar.DAY_OF_WEEK); i++)
-            {
-                daylist.add(" "); //1일과 시작요일을 맞추기위한 공백추가
-                num++;
-            }
-
-            for(int i=0; i<lastN; i++) { //달의 마지막 날짜까지 반복
-                daylist.add(i+1); //리스트에 추가
-                last=i+1;
-                num++;
-            }
+            daylist.add(sdf.format(mCal.getTime()));
+            mCal.add(Calendar.DAY_OF_MONTH, 1);
         }
 
-
-
-        for(int i=last; i<lastN; i++) { //달의 마지막 날짜까지 반복
-            daylist.add(i+1); //리스트에 추가
-            last=i+1;
-            num++;
-        }
+//        while(num<7)
+//        {
+//            for(int i=1; i<mCal.get(Calendar.DAY_OF_WEEK); i++)
+//            {
+//                daylist.add(" "); //1일과 시작요일을 맞추기위한 공백추가
+//                num++;
+//            }
+//
+//            for(int i=0; i<lastN; i++) { //달의 마지막 날짜까지 반복
+//                daylist.add(i+1); //리스트에 추가
+//                last=i+1;
+//                num++;
+//            }
+//        }
+//
+//
+//
+//        for(int i=last; i<lastN; i++) { //달의 마지막 날짜까지 반복
+//            daylist.add(i+1); //리스트에 추가
+//            last=i+1;
+//            num++;
+//        }
 
         }
 
