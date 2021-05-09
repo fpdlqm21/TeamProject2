@@ -10,7 +10,6 @@
         android:layout_gravity="center"
         android:gravity="center"
         android:padding="10dp"
-        android:background="@drawable/bg_day"
         android:text="이 부분이 출력돼요"
         android:textSize="20dp"/>
 
