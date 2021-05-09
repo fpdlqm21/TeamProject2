@@ -8,6 +8,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.GridView;
 import android.widget.Toast;
 
@@ -130,6 +131,16 @@ public class WeekCalendarFragment extends Fragment { //WeekCalendarAdapterì™€ ì—
                              Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_week_calendar,
                 container, false);
+
+        String[] times = {" ", "0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10",
+        "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23"};
+
+        ArrayAdapter<String> adapt = new ArrayAdapter<String>(getActivity(),
+                android.R.layout.simple_list_item_1, times);
+
+        GridView timegrid = rootView.findViewById(R.id.time);
+        timegrid.setAdapter(adapt);
+
         gridView = rootView.findViewById(R.id.week_grid);
         GridAdapter adapter = new GridAdapter(getActivity(),android.R.layout.simple_list_item_1,
                 daylist);
