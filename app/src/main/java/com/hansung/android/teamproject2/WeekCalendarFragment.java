@@ -154,7 +154,7 @@ public class WeekCalendarFragment extends Fragment { //WeekCalendarAdapter와 �
                 System.out.println("position= "+position);
             }
         });
-        ((MonthViewActivity) getActivity()).getSupportActionBar().setTitle(y+"년 "+(m+1)+"월");
+//        ((MonthViewActivity) getActivity()).getSupportActionBar().setTitle(y+"년 "+(m+1)+"월");
         return rootView;
     }
 }

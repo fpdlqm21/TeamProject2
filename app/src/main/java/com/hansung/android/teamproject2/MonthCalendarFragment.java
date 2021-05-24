@@ -38,9 +38,8 @@ public class MonthCalendarFragment extends Fragment { //MonthCalendarAdapter와 
     static ArrayList daylist; //날짜를 담을 리스트
     static Calendar mCal; //캘린더 객체
     static int date = 1;
-    static GridView gridView;
     static int y, m;
-
+    static GridView gridView;
     public MonthCalendarFragment() {
         // Required empty public constructor
     }
@@ -83,6 +82,7 @@ public class MonthCalendarFragment extends Fragment { //MonthCalendarAdapter와 
         for(int i=0; i<mCal.getActualMaximum(Calendar.DAY_OF_MONTH); i++) { //달의 마지막 날짜까지 반복
             daylist.add(i+1); //리스트에 추가
         }
+
     }
 
 
@@ -113,7 +113,8 @@ public class MonthCalendarFragment extends Fragment { //MonthCalendarAdapter와 
                         Toast.LENGTH_SHORT).show(); //클릭된 날짜 출력(제대로된 날짜가 출력 안됨 수정해야함)
             }
         });
-        ((MonthViewActivity) getActivity()).getSupportActionBar().setTitle(y+"년 "+(m+1)+"월");
+
+
         return rootView;
     }
 

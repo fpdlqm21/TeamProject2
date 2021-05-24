@@ -20,7 +20,7 @@ public class MonthCalendarAdapter extends FragmentStateAdapter { //MvPager에 �
     public Fragment createFragment(int position) {
         int pos = position-500; //500부터 시작으로 설정해서 계산하기 편하게
         int year = 2021;
-        int month = position;
+        int month = pos;
 
         System.out.println("year="+year+"month="+month);
         return MonthCalendarFragment.newInstance(year, month);

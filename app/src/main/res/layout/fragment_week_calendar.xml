@@ -22,7 +22,7 @@
         android:fillViewport="true"
     >
         <GridView
-            android:layout_width="50dp"
+            android:layout_width="60dp"
             android:layout_height="match_parent"
             android:numColumns="1"
             android:id="@+id/time"

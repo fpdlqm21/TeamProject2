@@ -10,6 +10,10 @@ import androidx.viewpager2.widget.ViewPager2;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
+
+import java.util.ArrayList;
+import java.util.Calendar;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -18,6 +22,11 @@ import android.view.ViewGroup;
  */
 
 public class MonthViewFragment extends Fragment {
+
+    static ArrayList daylist; //날짜를 담을 리스트
+    static Calendar mCal; //캘린더 객체
+    static int date = 1;
+    static int y, m;
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -64,7 +73,36 @@ public class MonthViewFragment extends Fragment {
         ViewPager2 vpPager = rootView.findViewById(R.id.MvpPager); //vpager2 객체 연결
         FragmentStateAdapter adapter = new MonthCalendarAdapter(this); //apdater연결
         vpPager.setAdapter(adapter);
+        vpPager.setCurrentItem(500, false);
+        vpPager.registerOnPageChangeCallback(new ViewPager2.OnPageChangeCallback(){
+            @Override
+            public void onPageSelected(int position){
+                int year=2021;
+                int month = position-495;
+
+                ((MonthViewActivity) getActivity()).getSupportActionBar().setTitle(year+"년 "+month+"월");
+
+                
+
+            }
+        });
         // Inflate the layout for this fragment
         return rootView;
+    }
+
+    public static void setDate(int year, int month, int date) {
+
+        daylist = new ArrayList();
+        y=year;
+        m=month+4;
+        mCal.set(year, m, date); //calendar 객체의 날짜 설정
+
+        for(int i = 1; i<mCal.get(Calendar.DAY_OF_WEEK); i++)
+        {
+            daylist.add(" "); //1일과 시작요일을 맞추기위한 공백추가
+        }
+        for(int i=0; i<mCal.getActualMaximum(Calendar.DAY_OF_MONTH); i++) { //달의 마지막 날짜까지 반복
+            daylist.add(i+1); //리스트에 추가
+        }
     }
 }

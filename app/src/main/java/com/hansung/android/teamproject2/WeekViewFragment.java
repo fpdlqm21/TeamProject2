@@ -51,6 +51,7 @@ public class WeekViewFragment extends Fragment {
         ViewPager2 vpPager = rootView.findViewById(R.id.WvpPager);
         FragmentStateAdapter adapter = new WeekCalendarAdapter(this);
         vpPager.setAdapter(adapter);
+        vpPager.setCurrentItem(500, false);
         // Inflate the layout for this fragment
         return rootView;
     }
