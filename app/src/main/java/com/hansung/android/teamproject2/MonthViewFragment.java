@@ -73,14 +73,80 @@ public class MonthViewFragment extends Fragment {
         ViewPager2 vpPager = rootView.findViewById(R.id.MvpPager); //vpager2 객체 연결
         FragmentStateAdapter adapter = new MonthCalendarAdapter(this); //apdater연결
         vpPager.setAdapter(adapter);
-        vpPager.setCurrentItem(500, false);
+        vpPager.setCurrentItem(120, false);
+        ((MonthViewActivity) getActivity()).getSupportActionBar().setTitle(2021+"년 "+5+"월");
         vpPager.registerOnPageChangeCallback(new ViewPager2.OnPageChangeCallback(){
             @Override
             public void onPageSelected(int position){
-                int year=2021;
-                int month = position-495;
 
-                ((MonthViewActivity) getActivity()).getSupportActionBar().setTitle(year+"년 "+month+"월");
+                if(position>=92 && position<=103)
+                {
+                    int year=2019;
+
+                    int pos = (position+5)%12;
+                    int month = pos;
+                    if(month==0)
+                        month=12;
+
+                    ((MonthViewActivity) getActivity()).getSupportActionBar().setTitle(year+"년 "+(month)+"월");
+                }
+
+                if(position>=104 && position<=115)
+                {
+                    int year=2020;
+
+                    int pos = (position+5)%12;
+                    int month = pos;
+                    if(month==0)
+                        month=12;
+
+                    ((MonthViewActivity) getActivity()).getSupportActionBar().setTitle(year+"년 "+(month)+"월");
+                }
+
+
+
+                if(position>=116 && position<=127)
+                {
+                    int year=2021;
+                    int pos = (position+5)%12;
+                    int month = pos;
+                    if(month==0)
+                        month=12;
+
+                    ((MonthViewActivity) getActivity()).getSupportActionBar().setTitle(year+"년 "+(month)+"월");
+                }
+
+
+                if(position>=128 && position<=139)
+                {
+                    int year=2022;
+                    int pos = (position+5)%12;
+                    int month = pos;
+                    if(month==0)
+                         month=12;
+
+                    ((MonthViewActivity) getActivity()).getSupportActionBar().setTitle(year+"년 "+(month)+"월");
+                }
+
+                if(position>=140 && position<=152)
+                {
+                    int year=2023;
+                    int pos = (position+5)%12;
+                    int month = pos;
+                    if(month==0)
+                        month=12;
+
+                    ((MonthViewActivity) getActivity()).getSupportActionBar().setTitle(year+"년 "+(month)+"월");
+                }
+
+
+
+
+
+
+
+
+
 
                 
 

@@ -114,7 +114,6 @@ public class MonthCalendarFragment extends Fragment { //MonthCalendarAdapter와 
             }
         });
 
-
         return rootView;
     }
 
