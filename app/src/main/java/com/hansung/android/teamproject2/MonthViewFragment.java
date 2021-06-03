@@ -1,5 +1,6 @@
 package com.hansung.android.teamproject2;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -74,15 +75,17 @@ public class MonthViewFragment extends Fragment {
                              Bundle savedInstanceState) { //레이아웃 생성
         View rootView = inflater.inflate(R.layout.fragment_month_view, container,false);
 
-        FloatingActionButton fab = rootView.findViewById(R.id.fab); //floating button
+        //floating button 구현부
+        FloatingActionButton fab = rootView.findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
+                Intent intent =new Intent(getActivity(), AddScheduleActivity.class);
+                startActivity(intent);
             }
-        }); //floating button이 눌릴경우
+        });
 
+        //ViewPager2 구현부
         ViewPager2 vpPager = rootView.findViewById(R.id.MvpPager); //vpager2 객체 연결
         FragmentStateAdapter adapter = new MonthCalendarAdapter(this); //apdater연결
         vpPager.setAdapter(adapter);
