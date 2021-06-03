@@ -12,6 +12,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.android.material.snackbar.Snackbar;
+
 import java.util.ArrayList;
 import java.util.Calendar;
 
@@ -70,6 +73,16 @@ public class MonthViewFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) { //레이아웃 생성
         View rootView = inflater.inflate(R.layout.fragment_month_view, container,false);
+
+        FloatingActionButton fab = rootView.findViewById(R.id.fab); //floating button
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
+                        .setAction("Action", null).show();
+            }
+        }); //floating button이 눌릴경우
+
         ViewPager2 vpPager = rootView.findViewById(R.id.MvpPager); //vpager2 객체 연결
         FragmentStateAdapter adapter = new MonthCalendarAdapter(this); //apdater연결
         vpPager.setAdapter(adapter);
