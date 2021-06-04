@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ScrollView;
 
 public class AddScheduleActivity extends AppCompatActivity {
@@ -31,6 +32,9 @@ public class AddScheduleActivity extends AppCompatActivity {
                 "21","22","23","24","25","26","27","28","29","30","31","32","33","34","35","36","37","38","39","40",
                 "41","42","43","44","45","46","47","48","49","50","51","52","53","54","55","56","57","58","59","60"};
         String[] AMPM = {"AM", "PM"};
+
+        EditText show_date = findViewById(R.id.show_date);
+        //MonthViewFragment에서 받은 날짜를 show_date가 표시하도록 해야함
 
 
         //이벤트 처리
