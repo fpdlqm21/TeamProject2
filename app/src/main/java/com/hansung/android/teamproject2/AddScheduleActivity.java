@@ -2,7 +2,10 @@ package com.hansung.android.teamproject2;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.location.Address;
+import android.location.Geocoder;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -10,6 +13,13 @@ import android.widget.EditText;
 import android.widget.GridView;
 import android.widget.ListView;
 import android.widget.ScrollView;
+import android.widget.TextView;
+
+import com.google.android.gms.maps.GoogleMap;
+
+import java.io.IOException;
+import java.util.List;
+import java.util.Locale;
 
 public class AddScheduleActivity extends AppCompatActivity {
 
@@ -73,5 +83,31 @@ public class AddScheduleActivity extends AppCompatActivity {
             }
         });
 
+        findbtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                getAddress();
+            }
+        });
+
     }
+
+    //주소검색 구현부
+    private void getAddress() {
+        EditText gps_edit = (EditText) findViewById(R.id.gps_edit);
+        String input = gps_edit.getText().toString();
+        try{
+            Geocoder geocoder = new Geocoder(this, Locale.KOREA);
+            List<Address> address = geocoder.getFromLocationName(input,1);
+            if(address.size() > 0) {
+                Address bestResult = (Address)address.get(0);
+
+                gps_edit.setText(String.format("[ %s , %s ]", bestResult.getLatitude(), bestResult.getLongitude()));
+            }
+        } catch (IOException e) {
+            Log.e(getClass().toString(),"Failed in using Geocoder.", e);
+            return;
+        }
+    }
+
 }
