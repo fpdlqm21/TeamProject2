@@ -42,6 +42,14 @@ public class MonthViewActivity extends AppCompatActivity
 
     }
 
+    //세부일정 날짜 전달 위한 intent 메소드
+//    public void onSelected(int month, int ddate) {
+//        int array[] = {month, ddate};
+//        Intent intent = new Intent(this, AddScheduleActivity.class);
+//        intent.putExtra("key", array);
+//        startActivity(intent);
+//    }
+
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.main_menu, menu);

@@ -1,5 +1,6 @@
 package com.hansung.android.teamproject2;
 
+import android.app.Activity;
 import android.os.Bundle;
 
 import androidx.appcompat.app.ActionBar;
@@ -110,6 +111,9 @@ public class MonthCalendarFragment extends Fragment { //MonthCalendarAdapter와 
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) { //날짜가 눌릴경우
                 //여기서 클릭된 날짜를 AddScheduleActivity의 제목(EditText)로 보내야함
+//                Activity activity = getActivity();
+//                if(activity instanceof MonthViewActivity)
+//                    ((MonthViewActivity)activity).onSelected((m+1), (position-mCal.get(Calendar.DAY_OF_WEEK)+2));
                 Toast.makeText(getActivity(), (m+1)+"."+(position-mCal.get(Calendar.DAY_OF_WEEK)+2),
                         Toast.LENGTH_SHORT).show(); //클릭된 날짜 출력(제대로된 날짜가 출력 안됨 수정해야함)
             }

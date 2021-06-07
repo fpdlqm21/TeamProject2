@@ -132,6 +132,15 @@ public class WeekCalendarFragment extends Fragment { //WeekCalendarAdapterì™€ ì—
         View rootView = inflater.inflate(R.layout.fragment_week_calendar,
                 container, false);
 
+        ArrayList box = new ArrayList();
+        for(int i=0; i<168; i++)
+        {
+            box.add(" ");
+        }
+        GridView grid_week = rootView.findViewById(R.id.grid_week);
+        WeekGridAdapter weekgridadapter  = new WeekGridAdapter(getActivity(), android.R.layout.simple_list_item_1, box);
+        grid_week.setAdapter(weekgridadapter);
+
         String[] times = {" ", "0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10",
         "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23"};
 
