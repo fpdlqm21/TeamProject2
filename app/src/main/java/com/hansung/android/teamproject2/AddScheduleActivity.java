@@ -14,14 +14,23 @@ import android.widget.GridView;
 import android.widget.ListView;
 import android.widget.ScrollView;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
+import com.google.android.gms.maps.OnMapReadyCallback;
+import com.google.android.gms.maps.SupportMapFragment;
+import com.google.android.gms.maps.model.BitmapDescriptorFactory;
+import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.MarkerOptions;
 
 import java.io.IOException;
 import java.util.List;
 import java.util.Locale;
 
-public class AddScheduleActivity extends AppCompatActivity {
+public class AddScheduleActivity extends AppCompatActivity implements OnMapReadyCallback {
+
+    GoogleMap mGoogleMap = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,11 +41,17 @@ public class AddScheduleActivity extends AppCompatActivity {
 //        int array[] = {getIntent().getIntExtra("key", -1)};
 //        String string = Integer.toString(array[0]) + Integer.toString(array[1]);
 
+        SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.map);
+        mapFragment.getMapAsync(this);
+
+        final Geocoder geocoder = new Geocoder(this);
+
         //버튼 객체 생성
         Button findbtn = findViewById(R.id.findbtn);
         Button savebtn = findViewById(R.id.svaebtn);
         Button cancelbtn = findViewById(R.id.cancelbtn);
         Button deletebtn = findViewById(R.id.deletebtn);
+        final EditText edit = (EditText)findViewById(R.id.gps_edit);
 
         //시작, 종료시간 스크롤뷰 객체 생성
         ListView start_hour = findViewById(R.id.start_hour);
@@ -83,31 +98,57 @@ public class AddScheduleActivity extends AppCompatActivity {
             }
         });
 
-        findbtn.setOnClickListener(new View.OnClickListener() {
+
+        //주소 찾기 버튼 클릭 시
+        findbtn.setOnClickListener(new View.OnClickListener(){
+
             @Override
             public void onClick(View v) {
-                getAddress();
+                List<Address> list=null;
+
+                String str = edit.getText().toString();
+                //입력한 문자열 저장
+                try{
+                    list=geocoder.getFromLocationName(str, 2);//최대 2개까지 list에 저장함
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+
+                if(list!=null){
+                    if(list.size()==0)
+                    {
+                        Toast.makeText(getApplicationContext(), "주소를 입력해주세요", Toast.LENGTH_SHORT).show();
+                    }else{
+                        Address addr = list.get(0);
+                        double lat = addr.getLatitude();//위도
+                        double lon = addr.getLongitude();//경도
+
+                        LatLng location = new LatLng(lat, lon);//위도와 경도 이용해 주소 만들기
+                        mGoogleMap.addMarker(new MarkerOptions().position(location).
+                                title(str).alpha(0.8f).icon(BitmapDescriptorFactory.
+                                fromResource(R.drawable.arrow)));
+                        //검색한 주소에 arrow이미지 올려서 마커에 추가
+                        mGoogleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(location, 15));
+                        //검색한 주소로 카메라 옮기기
+
+                    }
+                }
             }
         });
 
+
     }
 
-    //주소검색 구현부
-    private void getAddress() {
-        EditText gps_edit = (EditText) findViewById(R.id.gps_edit);
-        String input = gps_edit.getText().toString();
-        try{
-            Geocoder geocoder = new Geocoder(this, Locale.KOREA);
-            List<Address> address = geocoder.getFromLocationName(input,1);
-            if(address.size() > 0) {
-                Address bestResult = (Address)address.get(0);
 
-                gps_edit.setText(String.format("[ %s , %s ]", bestResult.getLatitude(), bestResult.getLongitude()));
-            }
-        } catch (IOException e) {
-            Log.e(getClass().toString(),"Failed in using Geocoder.", e);
-            return;
-        }
+
+    @Override
+    public void onMapReady(GoogleMap googleMap) {
+
+        mGoogleMap = googleMap;
+        //초기 위치는 한성대학교로 설정
+        LatLng hansung = new LatLng(37.5817891, 127.009854);
+        googleMap.addMarker(new MarkerOptions().position(hansung).title("한성대학교"));
+
+        googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(hansung, 15));
     }
-
 }
