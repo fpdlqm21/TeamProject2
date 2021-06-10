@@ -1,5 +1,6 @@
 package com.hansung.android.teamproject2;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -9,6 +10,9 @@ import androidx.viewpager2.widget.ViewPager2;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.android.material.snackbar.Snackbar;
 
 public class WeekViewFragment extends Fragment {
 
@@ -48,6 +52,16 @@ public class WeekViewFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) { //프래그먼트의 레이아웃 생성
         View rootView = inflater.inflate(R.layout.fragment_week_view, container,false);
+
+        FloatingActionButton fwab = rootView.findViewById(R.id.fwab); //floating button
+        fwab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent =new Intent(getActivity(), AddScheduleActivity.class);
+                startActivity(intent);
+            }
+        }); //floating button이 눌릴경우
+
         ViewPager2 vpPager = rootView.findViewById(R.id.WvpPager);
         FragmentStateAdapter adapter = new WeekCalendarAdapter(this);
         vpPager.setAdapter(adapter);
