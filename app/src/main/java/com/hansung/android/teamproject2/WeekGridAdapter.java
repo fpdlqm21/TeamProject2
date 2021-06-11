@@ -1,5 +1,6 @@
 package com.hansung.android.teamproject2;
 
+//주간달력 gridview에 격자로 표시위한 adapter
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -42,6 +43,7 @@ public class WeekGridAdapter extends BaseAdapter {
         }
 
         TextView box = convertView.findViewById(R.id.box); //텍스트뷰 연결
+        box.setText(this.box.get(position)+" ");
 
         return convertView;
     }

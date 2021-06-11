@@ -34,6 +34,7 @@ public class WeekCalendarFragment extends Fragment { //WeekCalendarAdapter와 �
     private int mParam2;
     private int mParam3;
     static ArrayList daylist;
+    static ArrayList box;
     static Calendar mCal;
     static int date = 1;
     static GridView gridView;
@@ -132,7 +133,9 @@ public class WeekCalendarFragment extends Fragment { //WeekCalendarAdapter와 �
         View rootView = inflater.inflate(R.layout.fragment_week_calendar,
                 container, false);
 
-        ArrayList box = new ArrayList();
+        box = new ArrayList();
+
+        //격자를 표시하기 위해 리스트에 공백 추가(06.12)
         for(int i=0; i<168; i++)
         {
             box.add(" ");
@@ -140,6 +143,7 @@ public class WeekCalendarFragment extends Fragment { //WeekCalendarAdapter와 �
         GridView grid_week = rootView.findViewById(R.id.grid_week);
         WeekGridAdapter weekgridadapter  = new WeekGridAdapter(getActivity(), android.R.layout.simple_list_item_1, box);
         grid_week.setAdapter(weekgridadapter);
+        //
 
         String[] times = {" ", "0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10",
         "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23"};

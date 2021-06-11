@@ -2,17 +2,21 @@ package com.hansung.android.teamproject2;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.location.Address;
 import android.location.Geocoder;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.GridView;
 import android.widget.ListView;
 import android.widget.ScrollView;
+import android.widget.SimpleCursorAdapter;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -31,11 +35,16 @@ import java.util.Locale;
 public class AddScheduleActivity extends AppCompatActivity implements OnMapReadyCallback {
 
     GoogleMap mGoogleMap = null;
+    private DBHelper mDBHelper;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_schedule);
+
+        //DBHelper
+        mDBHelper = new DBHelper(this);
+        //
 
         //MonthCalendarFragment에서 받아온 intent객체
 //        int array[] = {getIntent().getIntExtra("key", -1)};
@@ -90,6 +99,15 @@ public class AddScheduleActivity extends AppCompatActivity implements OnMapReady
 
         ArrayAdapter<String> finish_AMPMAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, AMPM);
         finish_AMPM.setAdapter(finish_AMPMAdapter);
+
+        //SQLite(06.12) 저장버튼이 눌리면 insertRecord메소드 실행, db저장 기능 구현하려는 부분
+//        savebtn.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                insertRecord();
+//            }
+//        });
+        
         //이벤트 처리
         cancelbtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -97,6 +115,7 @@ public class AddScheduleActivity extends AppCompatActivity implements OnMapReady
                 finish();
             }
         });
+
 
 
         //주소 찾기 버튼 클릭 시
@@ -139,6 +158,23 @@ public class AddScheduleActivity extends AppCompatActivity implements OnMapReady
 
     }
 
+    /*
+    //savebtn 기능 구현 메소드(06.12)
+    private void insertRecord() {
+        ListView start_hour = (ListView)findViewById(R.id.start_hour);
+        ListView start_minute = (ListView)findViewById(R.id.start_minute);
+        ListView start_AMPM = (ListView)findViewById(R.id.start_AMPM);
+
+        start_hour.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                mDBHelper.insertUserBySQL(position+1, ); //리스트뷰의 내용물이 전달되야하는데 구현 못함
+            }
+        });
+
+    }
+    //
+     */
 
 
     @Override
