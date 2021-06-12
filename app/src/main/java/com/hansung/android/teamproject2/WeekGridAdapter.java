@@ -13,11 +13,13 @@ import java.util.ArrayList;
 public class WeekGridAdapter extends BaseAdapter {
     private Context mContext;
     private LayoutInflater minflater;
-    private ArrayList box;
+    private String[] BOX = new String[170];
 
-    public WeekGridAdapter(Context context, int activity_list_item, ArrayList<String> box)
+    public WeekGridAdapter(Context context, int activity_list_item, String[] box)
     {
-        this.box = box;
+        for(int i=0; i<168; i++) {
+            this.BOX[i] = box[i];
+        }
         mContext = context;
         minflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
     }
@@ -43,8 +45,7 @@ public class WeekGridAdapter extends BaseAdapter {
         }
 
         TextView box = convertView.findViewById(R.id.box); //텍스트뷰 연결
-        box.setText(this.box.get(position)+" ");
-
+        box.setText(" ");
         return convertView;
     }
 }

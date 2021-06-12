@@ -47,27 +47,6 @@ public class DBHelper extends SQLiteOpenHelper {
         }
     }
 
-    // ArrayList로 수정전(06.12)
-    /*
-    public void insertUserBySQL(String hour, String minute, String AMPM) {
-        try{
-            String sql = String.format(
-                    "INSERT INTO %s (%s, %s, %s) VALUES ('%s', '%s', '%s')",
-                    UserContract.Users.TABLE_NAME,
-                    UserContract.Users._ID,
-                    UserContract.Users.KEY_HOUR,
-                    UserContract.Users.KEY_MINUTE,
-                    UserContract.Users.KEY_AMPM,
-                    hour, minute, AMPM
-            );
-
-            getWritableDatabase().execSQL(sql);
-        } catch (SQLException e) {
-            Log.e(TAG, "Error in inserting recodes");
-        }
-    }
-     */
-
     public Cursor getAllUseresBySQL() {
         String sql = "Select * FROM "+ UserContract.Users.TABLE_NAME;
         return getReadableDatabase().rawQuery(sql, null);

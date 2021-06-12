@@ -35,7 +35,7 @@ public class WeekCalendarFragment extends Fragment { //WeekCalendarAdapter와 �
     private int mParam2;
     private int mParam3;
     static ArrayList daylist;
-    static ArrayList box;
+    static String[] box;
     static Calendar mCal;
     static int date = 1;
     static GridView gridView;
@@ -92,31 +92,7 @@ public class WeekCalendarFragment extends Fragment { //WeekCalendarAdapter와 �
             daylist.add(sdf.format(mCal.getTime()));
             mCal.add(Calendar.DAY_OF_MONTH, 1);
         }
-
-//        while(num<7)
-//        {
-//            for(int i=1; i<mCal.get(Calendar.DAY_OF_WEEK); i++)
-//            {
-//                daylist.add(" "); //1일과 시작요일을 맞추기위한 공백추가
-//                num++;
-//            }
-//
-//            for(int i=0; i<lastN; i++) { //달의 마지막 날짜까지 반복
-//                daylist.add(i+1); //리스트에 추가
-//                last=i+1;
-//                num++;
-//            }
-//        }
-//
-//
-//
-//        for(int i=last; i<lastN; i++) { //달의 마지막 날짜까지 반복
-//            daylist.add(i+1); //리스트에 추가
-//            last=i+1;
-//            num++;
-//        }
-
-        }
+    }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -134,14 +110,16 @@ public class WeekCalendarFragment extends Fragment { //WeekCalendarAdapter와 �
         View rootView = inflater.inflate(R.layout.fragment_week_calendar,
                 container, false);
 
-        box = new ArrayList();
+        box = new String[170];
 
         //격자를 표시하기 위해 리스트에 공백 추가(06.12)
         for(int i=0; i<168; i++)
         {
-            box.add(" ");
+           box[i] = " ";
         }
         GridView grid_week = rootView.findViewById(R.id.grid_week);
+//        ArrayAdapter<String> Adapter = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_list_item_1, box);
+//        grid_week.setAdapter(Adapter);
         WeekGridAdapter weekgridadapter  = new WeekGridAdapter(getActivity(), android.R.layout.simple_list_item_1, box);
         grid_week.setAdapter(weekgridadapter);
         //
@@ -156,7 +134,7 @@ public class WeekCalendarFragment extends Fragment { //WeekCalendarAdapter와 �
         timegrid.setAdapter(adapt);
 
         gridView = rootView.findViewById(R.id.week_grid);
-        GridAdapter adapter = new GridAdapter(getActivity(),android.R.layout.simple_list_item_1,
+        GridAdapter adapter = new GridAdapter(getActivity(), android.R.layout.simple_list_item_1,
                 daylist);
         gridView.setAdapter((GridAdapter) adapter);
 

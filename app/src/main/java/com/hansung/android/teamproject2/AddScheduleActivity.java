@@ -48,12 +48,6 @@ public class AddScheduleActivity extends AppCompatActivity implements OnMapReady
         mDBHelper = new DBHelper(this);
         //
 
-        //MonthCalendarFragment에서 받아온 intent객체
-        int array[] = new int[2];
-        Intent intent = getIntent();
-        array = intent.getIntArrayExtra("key");
-        String string = Integer.toString(array[0]) +"."+ Integer.toString(array[1]);
-
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
 
@@ -82,7 +76,11 @@ public class AddScheduleActivity extends AppCompatActivity implements OnMapReady
         String[] AMPM = {"AM", "PM"};
 
         EditText show_date = findViewById(R.id.show_date);
-        //MonthViewFragment에서 받은 날짜를 show_date가 표시하도록 해야함
+        //MonthCalendarFragment에서 받아온 intent객체
+        int array[] = new int[2];
+        Intent intent = getIntent();
+        array = intent.getIntArrayExtra("key");
+        String string = Integer.toString(array[0]) +"."+ Integer.toString(array[1]);
         show_date.setText(string);
 
         //스크롤뷰에 시간표시
