@@ -8,6 +8,8 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
 
+import java.util.ArrayList;
+
 public class DBHelper extends SQLiteOpenHelper {
     final static String TAG = "SQLiteDBTest";
 
@@ -27,6 +29,26 @@ public class DBHelper extends SQLiteOpenHelper {
         onCreate(db);
     }
 
+    public void insertUserBySQL(ArrayList<Integer> arraylist1, ArrayList<String> arraylist2) {
+        try{
+            String sql = String.format(
+                    "INSERT INTO %s (%s, %s, %s) VALUES ('%s', '%s', '%s')",
+                    UserContract.Users.TABLE_NAME,
+                    UserContract.Users._ID,
+                    UserContract.Users.KEY_HOUR,
+                    UserContract.Users.KEY_MINUTE,
+                    UserContract.Users.KEY_AMPM,
+                    arraylist1.get(0), arraylist1.get(1), arraylist2.get(0)
+            );
+
+            getWritableDatabase().execSQL(sql);
+        } catch (SQLException e) {
+            Log.e(TAG, "Error in inserting recodes");
+        }
+    }
+
+    // ArrayList로 수정전(06.12)
+    /*
     public void insertUserBySQL(String hour, String minute, String AMPM) {
         try{
             String sql = String.format(
@@ -44,6 +66,7 @@ public class DBHelper extends SQLiteOpenHelper {
             Log.e(TAG, "Error in inserting recodes");
         }
     }
+     */
 
     public Cursor getAllUseresBySQL() {
         String sql = "Select * FROM "+ UserContract.Users.TABLE_NAME;

@@ -30,6 +30,7 @@ import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
 
@@ -104,14 +105,14 @@ public class AddScheduleActivity extends AppCompatActivity implements OnMapReady
         finish_AMPM.setAdapter(finish_AMPMAdapter);
 
         //SQLite(06.12) 저장버튼이 눌리면 insertRecord메소드 실행, db저장 기능 구현하려는 부분
-//        savebtn.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                insertRecord();
-//            }
-//        });
+        savebtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                insertRecord();
+            }
+        });
         
-        //이벤트 처리
+        //AddSchedule Activity 취소버튼 구현
         cancelbtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -161,24 +162,48 @@ public class AddScheduleActivity extends AppCompatActivity implements OnMapReady
 
     }
 
-    /*
     //savebtn 기능 구현 메소드(06.12)
     private void insertRecord() {
         ListView start_hour = (ListView)findViewById(R.id.start_hour);
         ListView start_minute = (ListView)findViewById(R.id.start_minute);
         ListView start_AMPM = (ListView)findViewById(R.id.start_AMPM);
+        ArrayList<Integer> arraylist1 = new ArrayList<Integer>(); //hour,minute을 저장하기위해
+        ArrayList<String> arraylist2 = new ArrayList<String>(); //AMPM을 저장하기위해
 
         start_hour.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                mDBHelper.insertUserBySQL(position+1, ); //리스트뷰의 내용물이 전달되야하는데 구현 못함
+               arraylist1.add(position+1);
+            }
+        });
+
+        start_minute.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                arraylist1.add(position+1);
+            }
+        });
+
+        start_AMPM.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                if(position == 0)
+                    arraylist2.add("AM");
+                else
+                    arraylist2.add("PM");
             }
         });
 
     }
     //
-     */
 
+    private void deleteRecord() {
+
+    }
+
+    private void updateRecord() {
+
+    }
 
     @Override
     public void onMapReady(GoogleMap googleMap) {
