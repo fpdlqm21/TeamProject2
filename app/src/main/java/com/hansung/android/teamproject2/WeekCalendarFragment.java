@@ -1,5 +1,6 @@
 package com.hansung.android.teamproject2;
 
+import android.app.Activity;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -162,6 +163,9 @@ public class WeekCalendarFragment extends Fragment { //WeekCalendarAdapter와 �
         gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Activity activity = getActivity();
+                if(activity instanceof MonthViewActivity)
+                    ((MonthViewActivity)activity).onSelected(position, 1);  //주간은 아직 날짜를 제대로 세팅 못해서 1로 설정
                 Toast.makeText(getActivity(), "position= "+position,
                         Toast.LENGTH_SHORT).show();
                 System.out.println("position= "+position);
