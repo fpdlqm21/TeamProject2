@@ -2,6 +2,7 @@ package com.hansung.android.teamproject2;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.location.Address;
@@ -47,8 +48,10 @@ public class AddScheduleActivity extends AppCompatActivity implements OnMapReady
         //
 
         //MonthCalendarFragment에서 받아온 intent객체
-//        int array[] = {getIntent().getIntExtra("key", -1)};
-//        String string = Integer.toString(array[0]) + Integer.toString(array[1]);
+        int array[] = new int[2];
+        Intent intent = getIntent();
+        array = intent.getIntArrayExtra("key");
+        String string = Integer.toString(array[0]) +"."+ Integer.toString(array[1]);
 
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
@@ -79,7 +82,7 @@ public class AddScheduleActivity extends AppCompatActivity implements OnMapReady
 
         EditText show_date = findViewById(R.id.show_date);
         //MonthViewFragment에서 받은 날짜를 show_date가 표시하도록 해야함
-        //show_date.setText(string);
+        show_date.setText(string);
 
         //스크롤뷰에 시간표시
         ArrayAdapter<String> start_hoursAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, hours);
